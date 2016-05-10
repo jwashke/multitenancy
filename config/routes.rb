@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   root "stores#index"
 
   resources :items,  only: [:index, :show]
@@ -6,4 +7,6 @@ Rails.application.routes.draw do
   resources :users,  only: [:index, :show]
 
   get ":store", to: "stores#show", as: :store
+  get ":store/items/:id", to: "store/items#show", as: :store_item
+  get ":store/items", to: "store/items#index", as: :store_items
 end
